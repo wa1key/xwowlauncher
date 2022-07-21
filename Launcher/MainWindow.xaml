@@ -1,0 +1,294 @@
+﻿<Window x:Class="Launcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+
+        TextOptions.TextFormattingMode="Ideal"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        UseLayoutRounding="True"
+
+        MouseDown="MainWindow_OnMouseDown"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        Title="AzerothCore启动器" Width="800" Height="450" Loaded="MainWindow_OnLoaded" Closing="MainWindow_OnClosing">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="-1" />
+    </WindowChrome.WindowChrome>
+
+
+    <Grid Background="Transparent">
+        <Image Source="Resources/bg2.jpg" Stretch="UniformToFill" ClipToBounds="True" Margin="10"
+               RenderOptions.BitmapScalingMode="Fant">
+            <Image.Clip>
+                <RectangleGeometry RadiusX="4" RadiusY="4" Rect="0,0,780,430" />
+            </Image.Clip>
+            <Image.Effect>
+                <BlurEffect Radius="1" />
+            </Image.Effect>
+        </Image>
+
+        <MediaElement Name="MyMediaElement" LoadedBehavior="Manual"
+
+                      Stretch="UniformToFill" ClipToBounds="True" Margin="10"
+                      ScrubbingEnabled="True">
+            <MediaElement.Clip>
+                <RectangleGeometry RadiusX="4" RadiusY="4" Rect="0,0,780,430" />
+            </MediaElement.Clip>
+        </MediaElement>
+
+        <Border Margin="10" BorderBrush="#7F000000" BorderThickness="1"
+                CornerRadius="5">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" BlurRadius="5" Opacity="1" ShadowDepth="3" />
+            </Border.Effect>
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="24" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+
+
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Ellipse Fill="Orange" Width="14" Height="14"
+                             IsHitTestVisible="False"
+                             VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed" />
+                    <Image Source="Resources/myico.png" Margin="10,0,0,0" Height="16" Width="16"
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                           RenderOptions.BitmapScalingMode="Fant">
+                        <Image.Effect>
+                            <DropShadowEffect
+                                ShadowDepth="1"
+                                Direction="315"
+                                Color="Black"
+                                Opacity="11"
+                                BlurRadius="1" />
+                        </Image.Effect>
+                    </Image>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
+                    <Frame x:Name="MainFrame" Navigated="MainFrame_OnNavigated"
+                           FocusVisualStyle="{x:Null}" NavigationUIVisibility="Hidden" Margin="0,-16,0,0" />
+
+
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Left"
+                      VerticalAlignment="Top">
+                    <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Height="24">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Foreground="#F3FBFF" FontSize="12" IsHitTestVisible="False">
+                            基于开源模拟器AzerothCore构建，仅供测试使用。
+                        </TextBlock>
+
+                        <Button Cursor="Hand" Focusable="False"
+                                Click="Az_Click"
+                                WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center"
+                                HorizontalAlignment="Center">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Grid Background="#01000000">
+                                                    <TextBlock x:Name="Text" Cursor="Hand"
+                                                               VerticalAlignment="Center"
+                                                               HorizontalAlignment="Left"
+                                                               Foreground="#F3FBFF" FontSize="12"
+                                                               IsHitTestVisible="False">
+                                                        AzerothCore源代码
+                                                    </TextBlock>
+                                                </Grid>
+
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Foreground"
+                                                                Value="#f7f27a"
+                                                                TargetName="Text" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsPressed" Value="True">
+                                                        <Setter Property="Margin"
+                                                                Value="1,1,0,0"
+                                                                TargetName="Text" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        
+                        <Button Cursor="Hand" Focusable="False" Margin="10,0,0,0"
+                                Click="launcher_Click"
+                                WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center"
+                                HorizontalAlignment="Center">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Grid Background="#01000000">
+                                                    <TextBlock x:Name="Text" Cursor="Hand"
+                                                               VerticalAlignment="Center"
+                                                               HorizontalAlignment="Left"
+                                                               Foreground="#F3FBFF" FontSize="12"
+                                                               IsHitTestVisible="False">
+                                                       本启动器源码
+                                                    </TextBlock>
+                                                </Grid>
+
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Foreground"
+                                                                Value="#f7f27a"
+                                                                TargetName="Text" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsPressed" Value="True">
+                                                        <Setter Property="Margin"
+                                                                Value="1,1,0,0"
+                                                                TargetName="Text" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                        <Button Cursor="Hand" Focusable="False" Margin="10,0,0,0"
+                                Click="License_Click"
+                                WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center"
+                                HorizontalAlignment="Center">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Grid Background="#01000000">
+                                                    <TextBlock x:Name="Text" Cursor="Hand"
+                                                               VerticalAlignment="Center"
+                                                               HorizontalAlignment="Left"
+                                                               Foreground="#F3FBFF" FontSize="12"
+                                                               IsHitTestVisible="False">
+                                                        免责声明
+                                                    </TextBlock>
+                                                </Grid>
+
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Foreground"
+                                                                Value="#f7f27a"
+                                                                TargetName="Text" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsPressed" Value="True">
+                                                        <Setter Property="Margin"
+                                                                Value="1,1,0,0"
+                                                                TargetName="Text" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                    </StackPanel>
+
+                </Grid>
+
+                <TextBlock Grid.Row="0" x:Name="Title" Grid.Column="1" Grid.ColumnSpan="2"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Foreground="#F3FBFF" FontSize="12" IsHitTestVisible="False">
+
+                    AzerothCore启动器
+                </TextBlock>
+
+                <Button Grid.Column="3" Cursor="Hand" Focusable="False" Width="32" Height="32" ToolTip="最小化"
+                        Click="Btn_min" WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid Width="32" Height="32" Background="#00ffffff"
+                                              VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <Path x:Name="MainPath" Width="14" Height="14"
+                                                  Fill="#F3FBFF"
+                                                  Stretch="Uniform"
+                                                  Data="M101.6 670.71999997h825.6c24 0 43.68 19.68 43.68 43.68s-19.68 43.68-43.68 43.68h-825.6c-24 0-43.68-19.68-43.68-43.68 0.48-24.48 19.68-43.68 43.68-43.68z" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Fill"
+                                                        Value="#f7f27a"
+                                                        TargetName="MainPath" />
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="True">
+                                                <Setter Property="Margin"
+                                                        Value="1,1,0,0"
+                                                        TargetName="MainPath" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Grid.Row="0" x:Name="CloseButton" Grid.Column="4" Cursor="Hand" Focusable="False" Width="32"
+                        Height="32"
+                        Click="Btn_close"
+                        WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid Width="32" Height="32" Background="#00ffffff"
+                                              VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <Path x:Name="MainPath" Width="14" Height="14"
+                                                  Fill="#F3FBFF"
+                                                  Stretch="Uniform"
+                                                  Data="M551.8131233 518.58778299L761.76290298 308.63800331c10.59773785-10.59773785 10.59773785-28.06968405-1e-8-38.66742189l-1.1457014-1.14570139c-10.59773785-10.59773785-28.06968405-10.59773785-38.6674219 0L512 479.06108504l-209.94977967-210.23620502c-10.59773785-10.59773785-28.06968405-10.59773785-38.66742191 0l-1.14570139 1.1457014c-10.88416321 10.59773785-10.88416321 28.06968405 0 38.6674219l209.94977967 209.94977967L262.23709702 728.53756267c-10.59773785 10.59773785-10.59773785 28.06968405 1e-8 38.6674219l1.1457014 1.1457014c10.59773785 10.59773785 28.06968405 10.59773785 38.6674219 0L512 558.4009063l209.94977967 209.94977967c10.59773785 10.59773785 28.06968405 10.59773785 38.66742191 0l1.14570139-1.1457014c10.59773785-10.59773785 10.59773785-28.06968405 0-38.6674219L551.8131233 518.58778299z" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Fill"
+                                                        Value="#f7f27a"
+                                                        TargetName="MainPath" />
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="True">
+                                                <Setter Property="Margin"
+                                                        Value="1,1,0,0"
+                                                        TargetName="MainPath" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>

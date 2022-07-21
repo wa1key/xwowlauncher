@@ -1,0 +1,77 @@
+﻿<Page x:Class="Launcher.Pages.Closing"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Launcher.Pages"
+      mc:Ignorable="d"
+      Title="License">
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#503F3F3F" />
+            <Setter Property="Foreground" Value="#F3FBFF" />
+            <Setter Property="BorderBrush" Value="#7f97A0A5" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="MyBorder" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}">
+                            <Grid x:Name="MyGrid">
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}"
+                                                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="MyBorder" Property="BorderBrush" Value="#ff97A0A5" />
+
+                                <Setter Property="Foreground" Value="Lime" />
+                            </Trigger>
+
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="MyGrid" Property="Margin"
+                                        Value="1,1,0,0" />
+                                <Setter Property="Foreground" Value="Lime" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock x:Name="AdPanel" Foreground="#F3FBFF" FontSize="12"  TextWrapping="Wrap" Margin="50,30,50,0">
+            关闭启动器
+            <LineBreak /><LineBreak />
+         
+            启动器正在运行网关服务，如果关闭启动器，游戏将会断开，您确认要关闭吗？
+   
+        </TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="0,15,0,10" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Click="Close_OnClick"  Width="150" Cursor="Hand" Height="24">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Block.TextAlignment="Center" VerticalAlignment="Center"
+                               HorizontalAlignment="Center" Foreground="#F3FBFF" Margin="5,0,0,0"
+                               Text="关闭启动器" />
+                </StackPanel>
+
+            </Button>
+            <Button Click="Back_OnClick" Width="150" Cursor="Hand" Height="24" Margin="10,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Block.TextAlignment="Center" VerticalAlignment="Center"
+                               HorizontalAlignment="Center" Foreground="#F3FBFF" Margin="5,0,0,0"
+                               Text="返回" />
+                </StackPanel>
+
+            </Button>
+        </StackPanel>
+
+    </StackPanel>
+</Page>

@@ -1,0 +1,120 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <UseWindowsForms>true</UseWindowsForms>
+        <UseWPF>true</UseWPF>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <UserSecretsId>9f321b7e-dedf-4066-ae01-bd7464112ae6</UserSecretsId>
+    </PropertyGroup>
+    <PropertyGroup>
+        <StartupObject>Launcher.App</StartupObject>
+    </PropertyGroup>
+    <PropertyGroup>
+        <ApplicationIcon>Resources\myico.ico</ApplicationIcon>
+    </PropertyGroup>
+    <PropertyGroup>
+        <TargetZone>LocalIntranet</TargetZone>
+    </PropertyGroup>
+    <PropertyGroup>
+        <GenerateManifests>false</GenerateManifests>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Remove="Resources\icon-lime.png" />
+        <None Remove="Resources\icon-orange.png" />
+        <None Remove="Resources\icon-white.png" />
+        <None Remove="Resources\wabox_icon.ico" />
+        <None Remove="Resources\mouse_up.png" />
+        <None Remove="Resources\mouse_down.png" />
+        <None Remove="Resources\BuildDate.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json">
+            <Version>13.0.1</Version>
+        </PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="Resources\Main.lua" />
+        <None Remove="Resources\myico.ico" />
+        <Resource Include="Resources\myico.ico" />
+        <None Remove="Resources\myico.png" />
+        <Resource Include="Resources\myico.png" />
+        <None Remove="Resources\bg.mp4" />
+        <None Remove="Resources\az_bg.mp4" />
+        <None Remove="Resources\az_bg2.mp4" />
+        <None Remove="Resources\bg2.jpg" />
+        <Resource Include="Resources\bg2.jpg" />
+        <None Remove="Resources\active_code.png" />
+        <Resource Include="Resources\active_code.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="Irony, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47">
+            <HintPath>..\LuaEngine\lib\Irony.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="Resources\bg.jpg" />
+      <None Remove="Resources\list.json" />
+      <Resource Include="Resources\list.json" />
+      <None Remove="Resources\Logo.png" />
+      <Resource Include="Resources\Logo.png" />
+      <None Remove="Resources\progressbar_pulse_line.png" />
+      <Resource Include="Resources\progressbar_pulse_line.png" />
+      <None Remove="Resources\progressbar_tall_bar_blue.png" />
+      <Resource Include="Resources\progressbar_tall_bar_blue.png" />
+      <None Remove="Resources\progressbar_tall_bar_gray.png" />
+      <Resource Include="Resources\progressbar_tall_bar_gray.png" />
+      <None Remove="Resources\progressbar_tall_bar_green.png" />
+      <Resource Include="Resources\progressbar_tall_bar_green.png" />
+      <None Remove="Resources\progressbar_tall_bar_red.png" />
+      <Resource Include="Resources\progressbar_tall_bar_red.png" />
+      <None Remove="Resources\progressbar_tall_bar_yellow.png" />
+      <Resource Include="Resources\progressbar_tall_bar_yellow.png" />
+      <None Remove="Resources\progressbar_tall_complete.png" />
+      <Resource Include="Resources\progressbar_tall_complete.png" />
+      <None Remove="Resources\progressbar_tall_empty.png" />
+      <Resource Include="Resources\progressbar_tall_empty.png" />
+      <None Remove="Resources\progressbar_tall_lead_blue.png" />
+      <Resource Include="Resources\progressbar_tall_lead_blue.png" />
+      <None Remove="Resources\progressbar_tall_lead_gray.png" />
+      <Resource Include="Resources\progressbar_tall_lead_gray.png" />
+      <None Remove="Resources\progressbar_tall_lead_green.png" />
+      <Resource Include="Resources\progressbar_tall_lead_green.png" />
+      <None Remove="Resources\progressbar_tall_lead_red.png" />
+      <Resource Include="Resources\progressbar_tall_lead_red.png" />
+      <None Remove="Resources\progressbar_tall_lead_yellow.png" />
+      <Resource Include="Resources\progressbar_tall_lead_yellow.png" />
+      <None Remove="Resources\progressbar_tall_pulse_blue.png" />
+      <Resource Include="Resources\progressbar_tall_pulse_blue.png" />
+      <None Remove="Resources\progressbar_tall_pulse_gray.png" />
+      <Resource Include="Resources\progressbar_tall_pulse_gray.png" />
+      <None Remove="Resources\progressbar_tall_pulse_green.png" />
+      <Resource Include="Resources\progressbar_tall_pulse_green.png" />
+      <None Remove="Resources\progressbar_tall_pulse_red.png" />
+      <Resource Include="Resources\progressbar_tall_pulse_red.png" />
+      <None Remove="Resources\progressbar_tall_pulse_yellow.png" />
+      <Resource Include="Resources\progressbar_tall_pulse_yellow.png" />
+      <None Remove="Resources\WoW_icon.png" />
+      <None Remove="Resources\xwow.ico" />
+      <None Remove="Resources\patch-zhCN-2.MPQ" />
+      <None Remove="Resources\patch-zhCN-2_1.MPQ" />
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Pages\Closing.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Resource Include="Resources\WoW_icon.png" />
+    </ItemGroup>
+</Project>
